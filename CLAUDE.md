@@ -6,6 +6,34 @@
 
 ---
 
+## Local setup
+
+```bash
+uv sync                         # install deps, creates .venv automatically
+cp .env.example .env            # fill in ANTHROPIC_API_KEY
+uv run uvicorn api.main:app --reload  # start the server
+```
+
+### Verify the environment
+
+```bash
+uv run python -c "import fastapi, httpx, anthropic, pydantic, dotenv, uvicorn; print('all deps ok')"
+```
+
+### Run tests
+
+```bash
+uv run pytest tests/
+```
+
+### Replay a past race (offline)
+
+```bash
+uv run python scripts/replay.py --session 9158 --speed 10x
+```
+
+---
+
 ## Project overview
 
 F1 strategy teams make pit stop decisions under extreme time pressure with incomplete data.
